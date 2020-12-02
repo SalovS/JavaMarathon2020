@@ -11,6 +11,7 @@ public class Task2 {
             x = scanner.nextDouble();
             y = scanner.nextDouble();
             if (y == 0) {
+                scanner.close();
                 break;
             }
             System.out.println(x / y);
