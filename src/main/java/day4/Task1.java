@@ -11,7 +11,7 @@ public class Task1 {
         int n = scanner.nextInt();
         scanner.close();
         int arr[] = new int[n];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(11);
         }
         int numbersMoreThan8 = 0;
@@ -19,7 +19,7 @@ public class Task1 {
         int numberOfEvenNumbers = 0;
         int numberOfOddNumbers = 0;
         long sum = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < arr.length; i++) {
             if (arr[i] > 8)
                 numbersMoreThan8++;
             if (arr[i] == 1)

@@ -9,8 +9,8 @@ public class Task3 {
         int sum = 0;
         int maxSum = 0;
         int line = 0;
-        for (int m = 0; m < 12; m++) {
-            for (int n = 0; n < 8; n++) {
+        for (int m = 0; m < arr[0].length; m++) {
+            for (int n = 0; n < arr[1].length; n++) {
                 arr[m][n] = random.nextInt(50);
                 sum += arr[m][n];
             }
