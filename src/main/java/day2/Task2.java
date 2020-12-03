@@ -7,6 +7,7 @@ public class Task2 {
         Scanner scanner = new Scanner(System.in);
         int a = scanner.nextInt();
         int b = scanner.nextInt();
+        scanner.close();
         if (a >= b) {
             System.out.println("Некорректный ввод");
             return;
