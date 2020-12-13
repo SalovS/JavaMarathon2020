@@ -26,10 +26,10 @@ public class MusicBand {
         members.add(name);
     }
 
-    public void removeMember(MusicArtist name) {
-        for (MusicArtist member : members) {
-            if (member.getName().equals(name)) {
-                members.remove(member);
+    public void removeMember(String name) {
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).getName().equals(name)) {
+                members.remove(i);
                 return;
             }
         }

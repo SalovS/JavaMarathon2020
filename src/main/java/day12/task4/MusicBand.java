@@ -27,9 +27,9 @@ public class MusicBand {
     }
 
     public void removeMember(String name) {
-        for (String member : members) {
-            if (member.equals(name)) {
-                members.remove(member);
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).equals(name)) {
+                members.remove(i);
                 return;
             }
         }
