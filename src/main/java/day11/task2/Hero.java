@@ -1,38 +1,29 @@
 package day11.task2;
 
-public abstract class Hero {
+public abstract class Hero implements PhysAttack {
     protected static final double MAX_HEALTH = 100;
+    protected static final double MAX_PERCENT = 100;
     protected static final double MIN_HEALTH = 0;
-    protected double health = 100;
+    protected double health;
     protected double physAtt;
     protected double physDef;
     protected double magicDef;
 
-    public abstract void physicalAttack(Hero hero);
-
-    public abstract String toString();
-
-    protected void takePhysDamage(double damage) {
-        if (health - (damage * (100 - physDef) / 100) < MIN_HEALTH)
-            health = MIN_HEALTH;
-        else health -= damage * ((100 - physDef) / 100);
-        printHealth(health);
+    public Hero() {
+        this.health = 100;
     }
 
-    protected void takeMagicDamage(double damage) {
-        if (health - (damage * (100 - magicDef) / 100) < MIN_HEALTH)
-            health = MIN_HEALTH;
-        else health -= damage * ((100 - magicDef) / 100);
-        printHealth(health);
+    @Override
+    public void physAttack(Hero hero) {
+        double attackScore = (physAtt * (MAX_PERCENT - hero.physDef)) / MAX_PERCENT;
+        if (hero.health - attackScore < MIN_HEALTH)
+            hero.health = MIN_HEALTH;
+        else
+            hero.health -= attackScore;
     }
 
-    protected void takeHealing(double healing) {
-        if (health + healing > MAX_HEALTH)
-            health = MAX_HEALTH;
-        else health += healing;
-        printHealth(health);
-    }
-    private void printHealth(double hitpoints){
-        System.out.printf("{health=%.0f}\n", hitpoints);
+    @Override
+    public String toString() {
+        return String.format("%s{health=%.0f}", this.getClass().getSimpleName(), health);
     }
 }

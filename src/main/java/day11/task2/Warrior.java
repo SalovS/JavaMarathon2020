@@ -6,13 +6,4 @@ public class Warrior extends Hero {
         physDef = 80;
         magicDef = 0;
     }
-
-    public void physicalAttack(Hero hero) {
-        System.out.print(hero);
-        hero.takePhysDamage(physAtt);
-    }
-
-    public String toString() {
-        return "Warrior";
-    }
 }

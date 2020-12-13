@@ -3,7 +3,6 @@ package day11.task1;
 public class Warehouse {
     private int countPickedOrders;
     private int countDeliveredOrders;
-    private int norm = 10000;
 
     public int getCountDeliveredOrders() {
         return countDeliveredOrders;
@@ -19,20 +18,6 @@ public class Warehouse {
 
     public void addDelivery() {
         countDeliveredOrders++;
-    }
-
-    public boolean getBonusForPicker() {
-        if (countPickedOrders >= norm) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean getBonusForCourier() {
-        if (countDeliveredOrders >= norm) {
-            return true;
-        }
-        return false;
     }
 
     public String toString() {

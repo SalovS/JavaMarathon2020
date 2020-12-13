@@ -1,25 +1,49 @@
 package day11.task1;
 
-public class Picker extends Worker {
+public class Picker implements Worker {
+    private int salary;
+    private boolean isPayed;
+    private Warehouse storage;
+    protected static final int WAGES = 80;
+    protected static final int CASHPRISE = 70000;
+    protected static final int NORM = 10000;
+
     public Picker(Warehouse storage) {
-        super(storage);
-        wages = 80;
-        cashPrise = 70000;
+        this.storage = storage;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
+    public boolean isPayed() {
+        return isPayed;
+    }
+
+    @Override
     public void doWork() {
-        salary += wages;
+        salary += WAGES;
         storage.addOrdering();
     }
-    public void bonus(){
+
+    @Override
+    public void bonus() {
         if (isPayed) {
             System.out.println("Бонус уже был выплачен");
             return;
         }
-        if (storage.getBonusForPicker())
-            salary += cashPrise;
-        else
+        if (storage.getCountPickedOrders() >= NORM) {
+            salary += CASHPRISE;
+            isPayed = true;
+        } else
             System.out.println("Бонус пока не доступен");
-        isPayed = true;
+    }
+
+    @Override
+    public String toString() {
+        return "Picker{" +
+                "salary=" + salary +
+                ", isPayed=" + isPayed +
+                '}';
     }
 }

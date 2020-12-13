@@ -1,6 +1,6 @@
 package day11.task2;
 
-public class Magician extends Hero {
+public class Magician extends Hero implements MagicAttack {
     private double magicAtt = 20;
 
     public Magician() {
@@ -9,17 +9,12 @@ public class Magician extends Hero {
         magicDef = 80;
     }
 
-    public void physicalAttack(Hero hero) {
-        System.out.print(hero);
-        hero.takePhysDamage(physAtt);
-    }
-
-    public void magicAttack(Hero hero) {
-        System.out.print(hero);
-        hero.takeMagicDamage(magicAtt);
-    }
-
-    public String toString() {
-        return "Magician";
+    @Override
+    public void magicalAttack(Hero hero) {
+        double attackScore = (magicAtt * (MAX_PERCENT - hero.magicDef)) / MAX_PERCENT;
+        if (hero.health - attackScore < MIN_HEALTH)
+            hero.health = MIN_HEALTH;
+        else
+            hero.health -= attackScore;
     }
 }
