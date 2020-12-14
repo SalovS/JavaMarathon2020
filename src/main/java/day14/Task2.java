@@ -28,8 +28,8 @@ public class Task2 {
                 try {
                     if (age < 0)
                         throw new FileException("Некорректный входной файл");
-                } catch (Exception e) {
-                    System.out.println("Некорректный входной файл");
+                } catch (FileException e) {
+                    System.out.println(e.getMessage());
                     return new ArrayList<>();
                 }
                 data.add(text[0] + " " + age);
