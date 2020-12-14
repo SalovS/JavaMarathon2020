@@ -29,7 +29,7 @@ public class Task1 {
             if (count == 10)
                 System.out.println(sum);
             else
-                System.out.println("Некорректный входной файл");
+                throw new FileException("Некорректный входной файл");
             scanner.close();
         } catch (Exception e) {
             System.out.println("Файл не найден");

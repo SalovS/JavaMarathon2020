@@ -1,7 +1,6 @@
 package day14;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +17,7 @@ public class Task3 {
         File file = new File(path);
         System.out.println(Arrays.toString(parseFileToObjList(file).toArray()));
     }
+
     public static List<Person> parseFileToObjList(File file) {
         List<Person> data = new ArrayList<>();
         try {
@@ -26,14 +26,14 @@ public class Task3 {
                 String line = scanner.nextLine();
                 String[] text = line.split(" ");
                 int age = Integer.parseInt(text[1]);
-                if (age < 0)
-                    try{
-                        throw new IOException();
-                    }catch (Exception e){
-                        System.out.println("Некорректный входной файл");
-                        return new ArrayList<>();
-                    }
-                data.add(new Person(text[0] ,age));
+                try {
+                    if (age < 0)
+                        throw new FileException("Некорректный входной файл");
+                } catch (Exception e) {
+                    System.out.println("Некорректный входной файл");
+                    return new ArrayList<>();
+                }
+                data.add(new Person(text[0], age));
             }
         } catch (Exception e) {
             System.out.println("Файл не найден");

@@ -1,9 +1,7 @@
 package day14;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,7 +14,7 @@ public class Task2 {
                 "day14" + separator +
                 "people.txt";
         File file = new File(path);
-        System.out.println(Arrays.toString(parseFileToStringList(file).toArray()));
+        System.out.println(parseFileToStringList(file));
     }
 
     public static List<String> parseFileToStringList(File file) {
@@ -27,12 +25,12 @@ public class Task2 {
                 String line = scanner.nextLine();
                 String[] text = line.split(" ");
                 int age = Integer.parseInt(text[1]);
-                if (age < 0)
-                    try{
-                        throw new IOException();
-                    }catch (Exception e){
-                        System.out.println("Некорректный входной файл");
-                        return new ArrayList<>();
+                try {
+                    if (age < 0)
+                        throw new FileException("Некорректный входной файл");
+                } catch (Exception e) {
+                    System.out.println("Некорректный входной файл");
+                    return new ArrayList<>();
                 }
                 data.add(text[0] + " " + age);
             }
