@@ -40,9 +40,9 @@ public class Task1 {
             }
             printWriter.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден");
+            System.out.println(e.getMessage());
         }catch (Exception e) {
-            System.out.println("Не удалось записать файл");
+            System.out.println(e.getMessage());
         }
     }
 }
