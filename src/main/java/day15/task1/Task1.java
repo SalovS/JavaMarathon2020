@@ -28,7 +28,7 @@ public class Task1 {
         List<String> data = new ArrayList<>();
         try {
             if(!fileRead.exists())
-                throw new FileException();
+                throw new FileNotFoundException("Файл не найден");
             Scanner scanner = new Scanner(fileRead);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -37,14 +37,14 @@ public class Task1 {
             }
             scanner.close();
             PrintWriter printWriter = new PrintWriter(fileWrite);
+            if(!fileWrite.exists())
+                throw new FileNotFoundException("Не удалось создать файл");
             for (int i = 0; i < data.size(); i++) {
                 printWriter.println(data.get(i));
             }
             printWriter.close();
-        } catch (FileException e) {
-            System.out.println("Файл не найден");
-        }catch (FileNotFoundException e) {
-            System.out.println("Не удалось записать файл");
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
