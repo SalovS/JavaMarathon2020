@@ -27,6 +27,8 @@ public class Task1 {
     public static void convertFile(File fileRead, File fileWrite){
         List<String> data = new ArrayList<>();
         try {
+            if(!fileRead.exists())
+                throw new FileException();
             Scanner scanner = new Scanner(fileRead);
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -39,10 +41,10 @@ public class Task1 {
                 printWriter.println(data.get(i));
             }
             printWriter.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (FileException e) {
+            System.out.println("Файл не найден");
+        }catch (FileNotFoundException e) {
+            System.out.println("Не удалось записать файл");
         }
     }
 }
