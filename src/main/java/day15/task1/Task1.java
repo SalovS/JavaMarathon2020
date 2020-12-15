@@ -1,6 +1,8 @@
 package day15.task1;
 
+
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,7 @@ public class Task1 {
         convertFile(fileRead, fileWrite);
     }
 
-    public static void convertFile(File fileRead, File fileWrite) {
+    public static void convertFile(File fileRead, File fileWrite){
         List<String> data = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(fileRead);
@@ -32,16 +34,14 @@ public class Task1 {
                 data.add(text[0] + ", " + text[1] + ", " + text[2]);
             }
             scanner.close();
-        } catch (Exception e) {
-            System.out.println("Файл не найден");
-        }
-        try {
             PrintWriter printWriter = new PrintWriter(fileWrite);
-            for (int i = 1; i < data.size(); i++) {
+            for (int i = 0; i < data.size(); i++) {
                 printWriter.println(data.get(i));
             }
             printWriter.close();
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл не найден");
+        }catch (Exception e) {
             System.out.println("Не удалось записать файл");
         }
     }
