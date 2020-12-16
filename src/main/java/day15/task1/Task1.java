@@ -33,7 +33,8 @@ public class Task1 {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] text = line.split(";");
-                data.add(text[0] + ", " + text[1] + ", " + text[2]);
+                if(Integer.parseInt(text[2]) == 0)
+                    data.add(text[0] + ", " + text[1] + ", " + text[2]);
             }
             scanner.close();
             PrintWriter printWriter = new PrintWriter(fileWrite);
