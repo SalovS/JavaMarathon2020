@@ -45,11 +45,11 @@ public class Task2 {
             String line = scanner.nextLine();
             String[] arr = line.split(" ");
             for (String n : arr) {
-                double number = Math.floor(Double.parseDouble(n));
+                double number = Double.parseDouble(n);
                 sum += number;
             }
             scanner.close();
-            System.out.printf("%.0f\n", sum);
+            System.out.println((int) sum);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
