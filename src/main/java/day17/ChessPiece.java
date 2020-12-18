@@ -7,7 +7,7 @@ public enum ChessPiece {
     BISHOP_WHITE(3.5, "♗"), BISHOP_BLACK(3.5, "♝"),
     KNIGHT_WHITE(3, "♘"), KNIGHT_BLACK(3, "♞"),
     PAWN_WHITE(1, "♙"), PAWN_BLACK(1, "♟"),
-    EMPTY(-1,"_");
+    EMPTY(-1, "_");
 
     private double figureМalue;
     private String symbol;
@@ -16,12 +16,14 @@ public enum ChessPiece {
         this.figureМalue = figureМalue;
         this.symbol = symbol;
     }
-     public String getSymbol(){
+
+    public String getSymbol() {
         return symbol;
-     }
-     public double getFigureМalue(){
+    }
+
+    public double getFigureМalue() {
         return figureМalue;
-     }
+    }
 
     @Override
     public String toString() {
