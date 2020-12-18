@@ -1,4 +1,4 @@
-package Tests.day18;
+package day18;
 
 public class Node {
     private int value;
